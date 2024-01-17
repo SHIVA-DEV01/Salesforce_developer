@@ -1,0 +1,37 @@
+<apex:page docType="html-5.0" >
+    <apex:form styleClass="slds-form">
+    	<apex:pageBlock title="Login Page">
+            <apex:slds />
+        	<apex:pageBlockSection >
+                  	<div class="slds-form-element slds-form-element_horizontal">
+    					<label class="slds-form-element__label" for="horizontal-input-id-01">Name</label>
+    						<div class="slds-form-element__control">
+      							<apex:input type="text" styleClass="slds-input"/>
+    						</div>
+  					</div>
+                
+                <div class="slds-form-element slds-form-element_horizontal">
+    					<label class="slds-form-element__label" for="horizontal-input-id-01">Password</label>
+    						<div class="slds-form-element__control">
+                				<apex:inputSecret styleClass="slds-input"/>
+    						</div>
+  					</div>
+                <apex:inputCheckbox id="checkbx" onclick="toggle();"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons location="bottom">
+            	<apex:commandButton value="Save" styleClass="slds-button__icon_x-Larg slds-button slds-button_success"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+    function toggle(){
+        var showPasswordCheckBox = document.getElementById('{!$Component.frm.theblock.thesection.checkbx}');
+        if(showPasswordCheckBox.checked){
+            document.getElementById('{!$Component.frm.theblock.thesection.Upass}').type="TEXT";
+        }else{
+            document.getElementById('{!$Component.frm.theblock.thesection.Upass}').type="PASSWORD";
+        }
+    }
+    
+    </script>
+</apex:page>

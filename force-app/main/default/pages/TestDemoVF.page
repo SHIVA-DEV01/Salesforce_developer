@@ -1,0 +1,11 @@
+<apex:page >
+    
+    <apex:variable var="text" value="Hello, !"/>
+           <apex:outputpanel rendered="{!contains(text, 'world')}">
+                            The text variable contains the substring 'world'.
+           </apex:outputpanel>    
+
+    <apex:outputpanel rendered="{!NOT(contains(text,'world'))}">
+                            The text variable not contains the substring 'world'.
+           </apex:outputpanel>
+</apex:page>

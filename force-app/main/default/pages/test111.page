@@ -1,0 +1,12 @@
+<apex:page standardController="Account" recordSetVar="accs" extensions="JavaScript_DemoV1Ctrl">
+
+    <script>
+       var GetIDs= '{!accIds}';
+    </script> -->
+    <!-- var param =  '{!$CurrentPage.parameters.qString}';
+
+
+   <!-- <apex:form >
+        <apex:commandButton value="Click" action="{!openLightningComponent}"/>
+    </apex:form> -->
+</apex:page>

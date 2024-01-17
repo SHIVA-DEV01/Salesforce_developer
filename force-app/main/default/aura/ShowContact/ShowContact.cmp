@@ -1,0 +1,17 @@
+<aura:component controller="ContactController">
+    
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <lightning:datatable keyField="id" 
+                         data="{!v.data}" 
+                         columns="{!v.columns}"/>
+    <lightning:card footer="Card Footer" title="Hello">
+    <lightning:button label="New"/>
+                            <p class="slds-p-horizontal_small">
+                                Card Body (custom component)
+                            </p>
+                        </lightning:card>
+</aura:component>

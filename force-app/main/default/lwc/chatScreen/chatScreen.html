@@ -1,0 +1,46 @@
+<template>
+	<lightning-card variant="Narrow" title="Whatsapp Integration">
+		<div class="chat-container">
+			<div class="chat-messages" style="border-radius: 20px; background-color: rgb(151 173 245);">
+		<template for:each={messages} for:item="message">
+			<template if:false={message.isSentByUser}>
+				<section key={message.id} role="log" class="slds-chat">
+					<ul class="slds-chat-list">
+						<li class="slds-chat-listitem slds-chat-listitem_inbound">
+							<div class="slds-chat-message">
+								<div class="slds-chat-message__body">
+									<div class="slds-chat-message__text slds-chat-message__text_inbound">
+										<span class="front-style">{message.text}</span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</template>
+			<template if:true={message.isSentByUser}>
+				<section key={message.id} role="log" class="slds-chat">
+					<ul class="slds-chat-list">
+						<li class="slds-chat-listitem slds-chat-listitem_outbound">
+							<div class="slds-chat-message">
+								<div class="slds-chat-message__body">
+									<div class="slds-chat-message__text slds-chat-message__text_outbound">
+										<span class="front-style">
+											{message.text}
+            </span>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+			</template>
+		</template>
+			</div>
+		</div>
+		<div class="chat slds-m-horizontal_xx-large">
+		<input type="text" placeholder="Type Your Message" onchange={handleInputChange} /><button onclick={sendMessage}>SEND</button>
+		</div>
+	</lightning-card>
+
+</template>

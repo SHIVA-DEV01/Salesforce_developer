@@ -1,0 +1,29 @@
+<apex:page standardController="Opportunity" lightningStylesheets="true" docType="html-5.0" extensions="ClosedDateNearByController">
+<apex:form >
+    <apex:pageBlock title="Opportunity Form">
+        <apex:pageMessages id="msgs" escape="true"></apex:pageMessages>
+        <apex:pageBlockSection >
+            
+            <apex:inputText label="Name" value="{!opp.Name}" required="true"/>
+            <apex:inputField label="Closed Date" type="date" value="{!opp.CloseDate}" showDatePicker="false" required="false" />
+            <apex:inputField label="stage" value="{!opp.stageName}"></apex:inputField>
+            <!--<apex:selectList value="{!opp.stageName}" size="1">
+                <apex:selectOption itemValue="--None--"/>
+                <apex:selectOption itemValue="Prospecting"/>
+                <apex:selectOption itemValue="Qualification"/>
+                <apex:selectOption itemValue="Needs Analysis"/>
+                <apex:selectOption itemValue="Value Proposition"/>
+                <apex:selectOption itemValue="Id. Decision Makers"/>
+                <apex:selectOption itemValue="Perception Analysis"/>
+                <apex:selectOption itemValue="Proposal/Price Quote"/>
+                <apex:selectOption itemValue="Negotiation/Review"/>
+                <apex:selectOption itemValue="Closed Won"/>
+                <apex:selectOption itemValue="Closed Lost"/>
+            </apex:selectList>-->
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+        	<apex:commandButton action="{!save}" value="Save" />
+        </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

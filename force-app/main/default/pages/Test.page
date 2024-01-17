@@ -1,0 +1,6 @@
+<apex:page controller="ContentController">
+<apex:form >
+    <apex:inputFile value="{!file}" />
+    <apex:commandbutton action="{!upload}" value="Upload" />
+</apex:form>
+</apex:page>

@@ -1,0 +1,14 @@
+<template>
+    <lightning-card variant="Narrow" title="Account Sub" icon-name="standard:account">
+        
+    </lightning-card>
+    <template if:true={accData} >
+        <p>{accData.Name}</p>
+        <p>{accData.Phone}</p>
+        <p>{accData.Website}</p>
+        <p>{accData.Type}</p>
+
+        
+
+    </template>
+</template>

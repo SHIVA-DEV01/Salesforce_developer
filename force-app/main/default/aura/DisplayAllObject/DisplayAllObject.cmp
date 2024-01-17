@@ -1,0 +1,23 @@
+<aura:component controller="fetchAllobject">
+
+
+        <aura:attribute name="SobjectList" type="List"></aura:attribute>
+        <aura:attribute name="FieldList" type="List"></aura:attribute>
+        <aura:attribute name="DataType" type="String"></aura:attribute>
+        <aura:attribute name="API" type="String"></aura:attribute>
+        <aura:handler name="init" value="{!this}" action="{!c.fillSobjectList}"></aura:handler>
+        <lightning:select label="Sobject List" aura:id="sobjName" onchange="{!c.fillSobjectFieldList}">
+            <aura:iteration items="{!v.SobjectList}" var="sobj">
+                <option value="{!sobj}">{!sobj}</option>
+    
+            </aura:iteration>
+    
+        </lightning:select>
+        <lightning:select label="FieldList" aura:id="sobjField" onchange="{!c.showFieldDetails}">
+            <aura:iteration items="{!v.FieldList}" var="fld">
+                <option value="{!fld}">{!fld}</option>
+    
+            </aura:iteration>
+        </lightning:select>
+        <h1>Data Type:{!v.DataType}</h1>
+        </aura:component>

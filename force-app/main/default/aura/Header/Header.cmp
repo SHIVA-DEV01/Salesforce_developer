@@ -1,0 +1,74 @@
+<aura:component access="global" implements="lightning:availableForFlowScreens" controller="AccountsController" >
+  <aura:attribute name="Show" type="boolean" default="false"></aura:attribute>
+  <aura:attribute name="userNameHeader" type="String" ></aura:attribute>
+  <aura:attribute name="ProfileDetail" type="boolean" default="false"></aura:attribute>
+  <aura:attribute name="GetData" type="Personal_Info__c"  default="{
+    'sobjectType':'Personal_Info__c',
+    'id':'',
+    'BBDEC__Name__c':'',
+    'BBDEC__Username__c':'',
+    'BBDEC__Password__c':''
+  }"></aura:attribute>
+    <header class="slds-global-header_container" >
+    <div class="slds-global-header" style="height: 4rem;">
+      <div class="slds-float_left" >
+         <!-- Display company logo --> 
+         
+         <h2 style="display: contents;"><img src="https://www.mitacs.ca/sites/default/files/uploads/newsroom/mitacs_bw.jpg" style="max-width:9%;max-height:9%;" alt="logo"/></h2>
+         
+         
+         <aura:if isTrue="{!v.Show}">
+
+          
+          <div class="slds-float_right" style="margin-right:1rem ;">
+            <lightning:buttonIcon iconName="utility:settings" variant="brand" alternativeText="Settings" title="Settings" onclick="{!c.ShowProfile}" />
+          </div>
+
+          
+
+          <aura:if isTrue="{!v.ProfileDetail}">
+
+          <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+          
+            <div class="slds-modal__container">
+              <!-- Modal/Popup Box Header Starts here-->
+              <header class="slds-modal__header">
+                  <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Personal Profile</h2>
+              </header>
+              <!--Modal/Popup Box Body Starts here-->
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                 Name : {!v.GetData.BBDEC__Name__c} <br/>
+                  Username : {!v.GetData.BBDEC__Username__c} <br/>
+                 Password : {!v.GetData.BBDEC__Password__c} 
+              </div>
+              <!--Modal/Popup Box Footer Starts here-->
+              <footer class="slds-modal__footer">
+                  <lightning:button variant="neutral"
+                                    label="Cancel"
+                                    title="Cancel"
+                                    onclick="{!c.closeModel}"/>
+                  <lightning:button variant="brand"
+                                    label="Logout"
+                                    title="Logout"
+                                    onclick="{!c.LogoutDetails}"/>
+              </footer>
+          </div>
+
+
+          </section>
+          <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+
+         </aura:if>
+         
+         
+         
+         
+    </div>
+
+        
+        
+        </div>
+        
+   </header>
+</aura:component>

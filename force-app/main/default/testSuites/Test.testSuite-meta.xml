@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>BBDEC.AccountClassTest</testClassName>
+    <testClassName>BBDEC.Account_Trigger_Test</testClassName>
+    <testClassName>BBDEC.BrainstromingTest</testClassName>
+    <testClassName>BBDEC.CreateAccountTest</testClassName>
+    <testClassName>BBDEC.CreateContact</testClassName>
+    <testClassName>BBDEC.OpportunityTest</testClassName>
+    <testClassName>BBDEC.Opportunity_Trigger_Test</testClassName>
+    <testClassName>BBDEC.Scripting_1_Part_2Test</testClassName>
+    <testClassName>BBDEC.Scripting_Part_3Test</testClassName>
+    <testClassName>BBDEC.SoqlTest</testClassName>
+    <testClassName>BBDEC.TemperatureConverterTest</testClassName>
+    <testClassName>BBDEC.TestClassScripting</testClassName>
+</ApexTestSuite>

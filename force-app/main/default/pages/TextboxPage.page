@@ -1,0 +1,18 @@
+<apex:page Controller="SearchInVFController">
+    
+        <apex:pageBlock title="Search Result">
+            <apex:form >
+                <apex:inputText value="{!searchKey}"/>
+        <apex:commandButton value="Search records" action="{!search}" style="margin-right: 15px; margin-left: 10px;"/>
+        <apex:commandButton value="Clear records" action="{!clear}" />
+        
+            <apex:pageBlockTable value="{!acc}" var="a">
+                <apex:column value="{!a.name}" headerValue="Name"/>
+                <apex:column value="{!a.Phone}" headerValue="Phone"/>
+                <apex:column value="{!a.BillingPostalCode}" headerValue="PostalCode"/>
+                <apex:column value="{!a.BillingCity}" headerValue="City"/>
+            </apex:pageBlockTable>
+            </apex:form>
+        </apex:pageBlock>
+    
+</apex:page>

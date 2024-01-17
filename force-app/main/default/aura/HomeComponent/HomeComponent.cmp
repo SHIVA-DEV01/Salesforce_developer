@@ -1,0 +1,100 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller="AccountsController">
+     
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="pageNumber" type="Integer" default="1"/>
+    <aura:attribute name="pageSize" type="Integer" default="10"/>
+    <aura:attribute name="isLastPage" type="Boolean" default="false"/>
+    <aura:attribute name="dataSize" type="Integer" default="0"/> 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+       <aura:attribute name="strObjectApiName" type="String" default="Account" access="global"/>
+    <aura:attribute name="fetchedSelectedRecords" type="Object" access="global"/>
+    <aura:attribute name="showData" type="Boolean" access="global" />
+
+    <aura:attribute name="fields" type="String" 
+                    default="Name,AccountNumber,Phone,Type,Website" access="global"/>
+    <aura:attribute name="objFields" type="String[]"></aura:attribute>
+    <aura:attribute name="displayCreateModalForm" type="boolean" default="false"/>
+
+    
+
+   
+    
+    
+    
+    <div class="slds-m-around_xx-large">
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner" style="margin-top: 6rem;">
+                <p class="slds-page-header__title" style="display:inline;">Accounts</p>
+
+                <div class="slds-no-flex" style="display: inline;float: right;">
+                    
+                            	<button class="slds-button slds-button_neutral" data-record="{!v.fetchedSelectedRecords.strObjectApiName}"
+                                    onclick="{!c.createNewRecord}"
+                       				data-label="New">New</button>
+                       	 	</div>
+                            <div style="  display: block; margin-left: auto; margin-right: auto; width: 70%;">
+                                <lightning:input type="text" name="searchKey" aura:id="searchKey" onchange="{!c.searchKeyChange}" placeholder="Search" style="color:daekblack;" />
+
+                            </div>
+
+                        
+                
+                
+            </div>
+        </div>
+         
+        <lightning:datatable aura:id = "accDT"
+                             columns = "{!v.columns}"
+                             maxRowSelection="{!v.maxRowSelection}"
+                             data = "{!v.data}"
+                             keyField = "Id"
+                             selectedRows = "{!v.selectedRowList}"
+                             onrowaction="{!c.handleRowAction}"/>
+         <aura:if isTrue="{!v.displayCreateModalForm}">
+      <div style="height:200px ; width: 900px;">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+                         aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                                    title="Close" onclick="{!c.closeCreateFormModal}">
+                            
+                               
+                            <span class="slds-assistive-text">Close</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">
+                                {!v.fetchedSelectedRecords.strObjectlabel}
+                            </h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                            
+                             <lightning:recordForm
+                                    objectApiName="{!v.strObjectApiName}"
+                                    fields="{!v.objFields}"
+                                    onsuccess="{!c.handleSuccess}" />
+                        </div>
+                        <footer class="slds-modal__footer">
+                            
+                              
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </div>
+             
+  </aura:if>
+         
+        <div class="slds-clearfix">
+            <div class="slds-page-header" role="banner">
+                <div class="slds-float_right">            
+                    <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                                      onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+                    <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                                      disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+                </div>
+                <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*v.pageSize)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
+            </div>
+        </div>
+    </div>
+</aura:component>

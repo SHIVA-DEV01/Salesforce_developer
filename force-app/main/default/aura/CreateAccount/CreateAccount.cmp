@@ -1,0 +1,16 @@
+<aura:component controller="CreateAccount">   
+    <aura:attribute name="AccountList" type="Account" default="{'sobjectType':'Account',
+    'Name':'',
+    'AccountNumber':'',
+    'Phone':'',
+    'Website':''}"/>
+
+        <lightning:input name="accName" label="Account Name " value="{!v.AccountList.Name}" />
+        <lightning:input name="accNumber" label="Account Number " value="{!v.AccountList.AccountNumber}" />
+        <lightning:input name="accPhone" label="Phone" value="{!v.AccountList.Phone}" />
+        <lightning:input name="accRating" label="Website" value="{!v.AccountList.Website}" />
+        <lightning:button variant="brand" label="Create Account" title="Brand action" onclick="{!c.CreateAccount }"/>
+
+
+
+</aura:component>

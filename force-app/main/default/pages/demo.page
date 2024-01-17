@@ -1,0 +1,32 @@
+<apex:page controller="SaveDataController" lightningStylesheets="True">
+    
+    <apex:form >
+    <apex:image url="https://www.clipartmax.com/png/full/140-1405563_his-career-in-communications-has-teamed-him-with-partners-employee-logo.png" height="50px" width="50px"/>
+    <apex:sectionHeader subtitle="Employee" title="Employee" help="https://trailhead.salesforce.com/content/learn/modules/visualforce_fundamentals/" />
+      <apex:pageBlock >
+          <apex:facet name="header">
+              <h1>
+                  Employee Information
+              </h1>
+          </apex:facet>
+          <apex:pageBlockbuttons Location="Bottom" >
+              <apex:commandButton Value="Save" action="{!save}"/>
+              <apex:commandButton Value="Cancel" />
+
+          </apex:pageBlockbuttons>
+          <div style="display: flex;flex-direction: column;align-items: stretch; margin-left: 80px;">
+              
+         
+              Name: <apex:inputText value="{!Name}" style="margin: 0px; width:35%" required="True" /><Br/>
+              Age :<apex:inputText value="{!Age}" style="margin: 0px; width:35%" /><Br/>
+              Phone:<apex:inputText value="{!Phone}" style="margin: 0px; width:35%" /><Br/>
+               </div>
+              <apex:inputFile value="Upload Picture" style="margin-left: 33rem"></apex:inputFile>
+              
+            
+      </apex:pageBlock>
+      
+      
+      <apex:sectionHeader subtitle="Powered By Cloud Analogy" description="Cloud Analogy is the world's preferred Salesforce Development Company that specializes in Salesforce implementation consulting, Salesforce customization consulting, and Salesforce customization."/>
+  </apex:form>
+</apex:page>

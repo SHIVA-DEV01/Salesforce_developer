@@ -1,0 +1,15 @@
+<aura:component controller="AccountDatatableSorting">
+    
+    <aura:attribute name="recordList" type="List"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="sortedBy" type="String" default="Name"/>
+ <aura:attribute name="sortedDirection" type="string" default="asc" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    
+    <lightning:layout multipleRows="true" horizontalAlign="center">
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:datatable keyField="id" data="{! v.recordList}" columns="{! v.columns}" hideCheckboxColumn="true" onsort="{!c.updateSorting}" sortedBy="{!v.sortedBy}" sortedDirection="{!v.sortedDirection}"  />
+            </lightning:layoutItem>
+    </lightning:layout>
+
+</aura:component>

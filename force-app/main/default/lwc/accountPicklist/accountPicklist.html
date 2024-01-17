@@ -1,0 +1,48 @@
+<template>
+    <div class="slds-m-top_small">
+        <lightning-card title="Account PickList">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_8-of-12 slds-m-horizontal_small">
+                    <span>
+                        <lightning-combobox name="progress" value={value} placeholder="Select Progress"
+                            options={options} onchange={pickListHandleChange}>
+                        </lightning-combobox>
+                    </span>
+                </div>
+            </div>
+
+        </lightning-card>
+    </div>
+    <div class="slds-m-top_small">
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <lightning-card>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <span>
+                                <div class="slds-m-horizontal_small"><c-contact-data-table picklistkey={key}
+                                        tablecolumns={lstConDataTableColumns} title={conTableTitle}
+                                        tabledata={relatedConData} onselected={contactSelected}> </c-contact-data-table></div>
+                            </span>
+                        </div>
+                    </div>
+                </lightning-card>
+            </div>
+            <div class="slds-col">
+                <lightning-card>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <span>
+                                <div class="slds-m-horizontal_small"><c-opportunity-table
+                                        tablecolumns={lstOppDataTableColumns} title={oppTableTitle}
+                                        tabledata={relatedOppData}> </c-opportunity-table></div>
+                            </span>
+                        </div>
+                    </div>
+                </lightning-card>
+            </div>
+        </div>
+    </div>
+
+
+</template>

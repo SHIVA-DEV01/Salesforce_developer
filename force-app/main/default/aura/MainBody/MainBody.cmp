@@ -1,0 +1,38 @@
+<aura:component>
+
+<aura:attribute name="showHead" type="boolean"></aura:attribute>
+<aura:attribute name="enableDataTable" type="boolean" default="true"></aura:attribute>
+<aura:attribute name="enableData" type="boolean" default="false"></aura:attribute> 
+<aura:attribute name="usernameBody" type="String"></aura:attribute>
+
+
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <aura:if isTrue="{!v.enableDataTable}">
+            <span>    <div style="margin-top: 9rem;">
+            <c:Login Logedin="{!v.enableDataTable}" showData="{!v.enableData}" ShowHeader="{!v.showHead}" username="{!v.usernameBody}"/>
+        </div></span>
+    </aura:if>
+        </div>
+    </div>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col">
+            <aura:if isTrue="{!v.enableDataTable}">
+          <span><div style="margin-top: 9rem;">
+    
+          <c:SignUp/></div></span>
+          </aura:if>
+        </div>
+    </div>
+    
+    
+        
+
+
+        <aura:if isTrue="{!v.enableData}">
+            <c:HomeComponent/>
+        </aura:if>
+
+
+
+</aura:component>

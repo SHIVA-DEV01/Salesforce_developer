@@ -1,0 +1,173 @@
+<template>
+    <template if:true={cardPayment}>
+        <lightning-card title="Card Payment" icon-name="utility:payment_gateway" style="width:500px; height:900px">
+
+            <lightning-input class="slds-m-left_medium" placeholder="Amount to be paid" type="number" label="Amount"
+                onchange={handleAmount} pattern="[0-9]{16}" message-when-pattern-mismatch="Invalid Amount"
+                name="amountPaid" required></lightning-input>
+
+            <!-- Saved Cards Shown -->
+            <div>
+                <lightning-layout multiple-rows="true" class="container lightningLayoutItem" vertical-align="start">
+                    <template for:each={arrayOfSavedCard} for:item="card">
+                        <lightning-layout-item size="1" class="credit-card" flexibility="auto" padding="around-small"
+                            data-id="card1" key={card.cardID} id={card.cardID}>
+                            <div class="slds-grid slds-wrap">
+                                <div class="slds-size_1-of-6">
+                                    <lightning-input type="radio" value={card.paymentMethodId} name={card.last4}
+                                        data-id="radio" onchange={handleSelectedCard}
+                                        class="radioButton"></lightning-input>
+                                </div>
+                                <div class="slds-size_5-of-6">
+
+                                    <div class={card.cardBrand}>
+                                        <div class="credit-card-last4">
+                                            {card.last4}
+                                        </div>
+                                        <div class="credit-card-expiry">
+                                            {card.expMonth} / {card.expYear}
+                                        </div>
+                                        <!-- <lightning-icon size='xx-small' class="slds-icon_small icon slds-float_left"
+                                        icon-name="utility:delete" alternative-text="Delete Card" onclick={handleDelete}
+                                        title="Delete Card" name={card.paymentMethodId}
+                                        data-id={card.last4}></lightning-icon>
+
+                                    <span>
+                                        <lightning-icon size='xx-small' class="slds-icon_small icon slds-float_left"
+                                            style="margin-left: -5px;" icon-name="utility:edit" alternative-text="Edit"
+                                            onclick={handleEdit} title="Edit Bank" data-id={card.last4}
+                                            name={card.paymentMethodId}></lightning-icon>
+                                    </span> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+
+
+
+            <div class="slds-text-heading_small text_color slds-m-vertical_medium">
+
+                <input type="checkbox" class="checkbox-round" checked={isNewPayment} data-id="newCard"
+                    name="newCardPay" onclick={handleChangeSaveCard} />
+                <label for="checkbox" class="txtForIcon"> Add new payment method</label><br>
+
+            </div>
+
+            <template if:true={isNewPayment}>
+                <p class="text_color">Personal Details</p>
+                <div class=" slds-grid slds-p-around_medium lgc-bg">
+                    <lightning-input class="slds-col" placeholder="First Name" name="firstName" type="text"
+                        label="First Name" onchange={handleChange} pattern="[a-zA-Z ]+$"
+                        message-when-pattern-mismatch="Invalid First Name"
+                        value={cardDetails.firstName}></lightning-input>
+                    <lightning-input class="slds-col slds-m-left_medium" placeholder="Last Name" type="text"
+                        label="Last Name" onchange={handleChange} pattern="[a-zA-Z ]+$"
+                        message-when-pattern-mismatch="Invalid Last Name" value={cardDetails.lastName}
+                        name="lastName"></lightning-input>
+                </div>
+                <div class="slds-grid slds-p-around_medium lgc-bg">
+                    <lightning-input class="slds-col" type="email" placeholder="Email" label="Email"
+                        onchange={handleChange} value={cardDetails.email} name="email"></lightning-input>
+                </div>
+                <p class="text_color">Card Details</p>
+                <div class="slds-grid slds-p-around_medium lgc-bg">
+                    <lightning-input class="slds-col " placeholder="Name on card" type="text" label="Name on card"
+                        onchange={handleChange} pattern="[a-zA-Z ]+$" message-when-pattern-mismatch="Invalid Name"
+                        value={cardDetails.nameOnCard} name="nameOnCard" required></lightning-input>
+                    <lightning-input class="slds-col slds-m-left_medium" required placeholder="Expiry Date" type="text"
+                        label="Expiry" onchange={handleChange} pattern="(0[1-9]|1[0-2])\/[0-9]{4}"
+                        message-when-pattern-mismatch="Expiry should be in the format 'MM/YYYY'"
+                        value={cardDetails.expiry} name="expiry"></lightning-input>
+                </div>
+                <div class="slds-grid slds-p-around_medium lgc-bg">
+                    <lightning-input class="slds-col " type="text" placeholder="Card Number" label="Card Number"
+                        onchange={handleChange} required pattern="[0-9]{16}"
+                        message-when-pattern-mismatch="Invalid Card number" value={cardDetails.cardNumber}
+                        name="cardNumber"></lightning-input>
+                    <lightning-input class="slds-col slds-m-left_medium" pattern="[0-9]{3}"
+                        message-when-pattern-mismatch="Invalid CVV" type="text" placeholder="CVV" label="CVV"
+                        onchange={handleChange} required value={cardDetails.cVV} name="cVV"></lightning-input>
+                </div>
+                <div class="slds-grid slds-p-around_medium lgc-bg">
+                    <lightning-input class="slds-col" name="saveCardForPay" type="checkbox"
+                        label="Save Card for Future Payment" value={saveCardObject.saveCardForPay}
+                        onchange={handleChangeSaveCard}></lightning-input>
+                </div>
+
+            </template>
+
+            <lightning-button variant="brand" label="Make Payment" onclick={handlePayment} title="Make Payment"
+                icon-name="utility:approval" class="slds-p-around_medium lgc-bg slds-align_absolute-center">
+            </lightning-button>
+
+
+        </lightning-card>
+    </template>
+    <template if:true={successPayment}>
+        <div class="slds-grid slds-grid_align-center">
+            <div class="slds-size_1-of-1 slds-small-size_12-of-12 slds-medium-size_10-of-12 slds-large-size_6-of-12">
+                <div class="slds-align_absolute-center slds-text-heading_large slds-m-vertical_x-large">
+                    <span class="text_size slds-m-bottom_x-large">Stripe Payment</span>
+                </div>
+                <template lwc:if={isPaymentSuccess}>
+                    <div class="slds-col rectangle1">
+                        <div class="slds-grid slds-m-around_small">
+                            <div class="slds-col slds-size_3-of-3">
+                                <div class="slds-align_absolute-center">
+                                    <lightning-icon icon-name="utility:check" variant="Success" size="large">
+                                    </lightning-icon>
+                                </div>
+                                <p
+                                    class="slds-align_absolute-center slds-m-top_x-large slds-m-bottom_x-small slds-text-heading_medium">
+                                    <strong> Payment Completed Sucessfully </strong>
+                                </p>
+                                <p class="slds-align_absolute-center slds-text-heading_small slds-m-bottom_medium">
+                                    Transaction ID txn_123456789 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slds-col slds-size_4-of-4 slds-align_absolute-center">
+                        <div class="slds-grid slds-align_absolute-center">
+                            <div class="slds-m-right_x-small">
+                                <lightning-icon icon-name="action:check"></lightning-icon> <span
+                                    class="text_color ">Succesfully Subscribed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <lightning-button variant="brand" label="Back To Home" onclick={handleTryAgain} title="Back To Home"
+                        class="slds-align_absolute-center">
+                    </lightning-button>
+                </template>
+
+                <template lwc:else>
+                    <div class="slds-modal__content slds-p-around_medium rectangle">
+                        <div>
+                            <div class="slds-align_absolute-center">
+                                <lightning-icon icon-name="utility:warning" variant="error" size="large">
+                                </lightning-icon>
+                            </div>
+                            <p class="slds-align_absolute-center slds-m-vertical_x-small slds-text-heading_medium">
+                                <strong class=""> Transaction Failed </strong>
+                            </p>
+                            <p class="slds-align_absolute-center slds-text-heading_medium slds-m-bottom_medium"> Payment
+                                Failed ; Card Payment Failed</p>
+                        </div>
+                    </div>
+                    <div class="slds-align_absolute-center slds-text-heading_medium slds-m-vertical_x-large">
+                        <span class="text_size ">Please try a different payment method.</span>
+                    </div>
+                    <lightning-button variant="brand" label="Try Again" onclick={handleTryAgain} title="Try Again"
+                        class="slds-align_absolute-center">
+                    </lightning-button>
+                </template>
+
+            </div>
+        </div>
+    </template>
+
+</template>

@@ -1,0 +1,298 @@
+<aura:component Controller="Contact_Controller">
+    
+    <aura:attribute name="Username" type="String"/>
+    <aura:attribute name="Password" type="String"/>               
+    <aura:attribute name="you" type="boolean" default="false"/>
+    
+    <lightning:input label="Username" name="username" value="{!v.Username}" required="true" />
+    <lightning:input label="Password:" type="password" name="password"  value="{!v.Password}"/>
+    <lightning:button variant="Brand" label="Login" onclick="{!c.userLogin}"/>
+
+
+
+
+
+
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="isEditProfile" type="boolean" default="false"/>
+   <aura:attribute name="name" type="string" />
+   <aura:attribute name="isTrue" type="boolean" default="false"/>
+   <aura:attribute name="isView" type="boolean" default="false"/>
+<aura:attribute name="isEdit" type="boolean" default="false"/>
+
+<aura:attribute name="email" type="string" />
+<aura:attribute name="profile" type="boolean" default="false"/>
+<aura:attribute name="Accounts" type="Account" default="{'sobjectType':'Account',
+                                                        'Name':'',
+                                                        'Phone':'',
+                                                        'NumberOfEmployees':''
+                                                       }" /> 
+<aura:attribute name="Account" type="Account" default="{'sobjectType':'Account',
+                                                        'Id':'',
+                                                        'Name':'',
+                                                        'Phone':'',
+                                                        'NumberOfEmployees':''
+                                                       }" />
+
+<aura:attribute name="data" type="Object"/>
+<aura:attribute name="columns" type="List"/>
+<aura:attribute name="pageNumber" type="Integer" default="1"/>
+<aura:attribute name="pageSize" type="Integer" default="10"/>
+<aura:attribute name="isLastPage" type="Boolean" default="false"/>
+<aura:attribute name="dataSize" type="Integer" default="0"/> 
+<aura:attribute name="hide" type="Boolean" default="false"/>
+<aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+
+       <aura:if isTrue="{!v.hide}">
+            <h1 style="float: right;">
+                <lightning:buttonIcon iconName="utility:adduser" variant="bare" onclick="{! c.getProfile}" alternativeText="Settings" title="View Profile" />
+  <!-- <lightning:buttonicon variant="brand"
+                     label="View Profile"
+                     title="view"
+                     onclick="{! c.getProfile}" />  --> </h1>        
+<div class="slds-m-around_xx-large">
+   <div class="slds-clearfix">                                             
+       <div class="slds-page-header" role="banner">
+           <p class="slds-page-header__title">Accounts</p>
+       </div>
+   </div>
+   <div >
+
+       <h1 style="float: right;margin-right:100px;">
+   <lightning:button variant="brand"
+                     label="create new"
+                     title="create new"
+                     onclick="{! c.openModel }" /></h1>
+    <lightning:input type="text" name="searchKey" label="Enter" aura:id="searchKey" onchange="{!c.searchKeyChange}" placeholder="Search" class="slds-size--1-of-6" /> 
+       </div>
+<!--  Account Datatable -->      
+
+   <lightning:datatable aura:id = "accDT"
+                        columns = "{!v.columns}"
+                        maxRowSelection="{!v.maxRowSelection}"
+                        data = "{!v.data}"
+                        keyField = "Id"
+                        selectedRows = "{!v.selectedRowList}"
+                        onrowaction="{!c.handleRowAction}"/>
+    
+   <div class="slds-clearfix">
+       <div class="slds-page-header" role="banner">
+           <div class="slds-float_right">            
+               <lightning:button label="Prev" iconName="utility:chevronleft" iconPosition="left"
+                                 onclick="{!c.handlePrev}" disabled="{! v.pageNumber == 1}"/>
+               <lightning:button label="Next" iconName="utility:chevronright" iconPosition="right"
+                                 disabled="{! v.isLastPage}" onclick="{!c.handleNext}"/>
+           </div>
+           <p class="slds-page-header__title">Page {!v.pageNumber} | Showing records from {! ((v.pageNumber-1)*v.pageSize)+' to '+((v.pageNumber-1)*v.pageSize+v.dataSize)}</p>
+       </div>
+   </div>
+</div>
+
+
+
+
+
+ <aura:if isTrue="{!v.isModalOpen}">
+        
+<!--  create new Account section --> 
+     
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+           <div class="slds-modal__container">
+              
+               <header class="slds-modal__header">
+                   <lightning:buttonIcon iconName="utility:close"
+                                         onclick="{! c.closeModel }"
+                                         alternativeText="close"
+                                         variant="bare-inverse"
+                                         class="slds-modal__close"/>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create Account</h2>
+               </header>
+              
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                   <lightning:input name="name" label="Name" type="string" value="{!v.Accounts.Name}" />
+                   <lightning:input name="phone" label="Phone" type="string" value="{!v.Accounts.Phone}" />
+                   <lightning:input name="employees" label="Employees" type="string" value="{!v.Accounts.NumberOfEmployees}" />
+                   
+               </div>
+            
+               <footer class="slds-modal__footer">
+                   <lightning:button variant="neutral"
+                                     label="Cancel"
+                                     title="Cancel"
+                                     onclick="{! c.closeModel }"/>
+                   <lightning:button variant="brand"
+                                     label="OK"
+                                     title="OK"
+                                     onclick="{!c.submitDetails}"/>
+               </footer>
+           </div>
+       </section>
+     <div class="slds-backdrop slds-backdrop_open"></div><!-- to blur the section background -->
+       <div class="slds-backdrop slds-backdrop_open"></div>
+     
+<!--  view the profile section -->       
+     
+   </aura:if>
+             <aura:if isTrue="{!v.profile}">
+        
+       
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open" >
+           <div class="slds-modal__container">
+              
+               <header class="slds-modal__header">
+                   <lightning:buttonIcon iconName="utility:close"
+                                         onclick="{! c.closeProfile }"
+                                         alternativeText="close"
+                                         variant="bare-inverse"
+                                         class="slds-modal__close"/>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Hii {!v.User.Name}</h2>
+               </header>
+              
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                   Name     :  <ui:outputText title="Name" value="{!v.User.Name}"/><br></br>
+                   UserName :  <ui:outputText title="UserName" value="{!v.User.ftnsp__Email__c}"/><br></br>
+                   <div style="margin-top:120px;">
+                       <lightning:button variant="brand"
+                     label="Edit"
+                     title="create new"
+                     onclick="{! c.EditProfile}" />
+                   </div>
+               </div>
+            
+               <footer class="slds-modal__footer">
+                   <lightning:button variant="neutral"
+                                     label="Cancel"
+                                     title="Cancel"
+                                     onclick="{! c.closeProfile }"/>
+                  
+               </footer>
+           </div>
+       </section>
+                 <div class="slds-backdrop slds-backdrop_open"></div><!-- to blur the section background -->
+       
+   </aura:if>
+       
+<!--  edit the profile section -->          
+       
+        <aura:if isTrue="{!v.isEditProfile}">
+        
+       
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+           <div class="slds-modal__container">
+              
+               <header class="slds-modal__header">
+                   <lightning:buttonIcon iconName="utility:close"
+                                         onclick="{! c.closeEditProfile }"
+                                         alternativeText="close"
+                                         variant="bare-inverse"
+                                         class="slds-modal__close"/>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Profile Editor</h2>
+               </header>
+              
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                   <ui:outputText title="Email"  value="{!v.User.ftnsp__Email__c}" />
+                   <lightning:input name="name" label="Name" type="string" value="{!v.User.Name}" />
+         
+                  
+                   
+               </div>
+            
+               <footer class="slds-modal__footer">
+                   <lightning:button variant="neutral"
+                                     label="Cancel"
+                                     title="Cancel"
+                                     onclick="{! c.closeEditProfile }"/>
+                   <lightning:button variant="brand"
+                                     label="OK"
+                                     title="OK"
+                                     onclick="{!c.submitEditProfile}"/>
+               </footer>
+           </div>
+       </section>
+            <div class="slds-backdrop slds-backdrop_open"></div><!-- to blur the section background -->
+       </aura:if>
+<!--  View the record section -->        
+       <aura:if isTrue="{!v.isView}" >
+       
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+           <div class="slds-modal__container">
+              
+               <header class="slds-modal__header">
+                   <lightning:buttonIcon iconName="utility:close"
+                                         onclick="{! c.closeViewAccount }"
+                                         alternativeText="close"
+                                         variant="bare-inverse"
+                                         class="slds-modal__close"/>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.Account.Name} Details</h2>
+               </header>
+              
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                   Name     :  {!v.Account.Name}<br></br>
+                   Type     :  {!v.Account.type}<br></br>
+                   Employees:  {!v.Account.NumberOfEmployees}<br></br>
+                   Phone    :  {!v.Account.Phone}<br></br>
+         
+                  
+                   
+               </div>
+            
+               <footer class="slds-modal__footer">
+                   <lightning:button variant="neutral"
+                                     label="Cancel"
+                                     title="Cancel"
+                                     onclick="{! c.closeViewAccount}"/>
+
+               </footer>
+           </div>
+       </section>
+           <div class="slds-backdrop slds-backdrop_open"></div><!-- to blur the section background -->
+       </aura:if>
+       
+       
+       
+  <!--  Editing the record section -->        
+       <aura:if isTrue="{!v.isEdit}" >
+       
+       <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+           <div class="slds-modal__container">
+              
+               <header class="slds-modal__header">
+                   <lightning:buttonIcon iconName="utility:close"
+                                         onclick="{! c.closeEditAccount }"
+                                         alternativeText="close"
+                                         variant="bare-inverse"
+                                         class="slds-modal__close"/>
+                   <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{!v.Account.Name} Details</h2>
+               </header>
+              
+               <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                   <lightning:input name="editname" label="Name" type="string" value="{!v.Account.Name}" />
+                   <lightning:input name="editphone" label="Phone" type="string" value="{!v.Account.Phone}" />
+                   <lightning:input name="editemployees" label="Employees" type="string" value="{!v.Account.NumberOfEmployees}" />    
+               </div>
+            
+               <footer class="slds-modal__footer">
+                   <lightning:button variant="neutral"
+                                     label="Cancel"
+                                     title="Cancel"
+                                     onclick="{! c.closeEditAccount}"/>
+                   <lightning:button variant="brand"
+                                     label="Save"
+                                     title="Save"
+                                     onclick="{!c.submitEditDetails}"/>
+
+               </footer>
+           </div>
+       </section>
+           <div class="slds-backdrop slds-backdrop_open"></div><!-- to blur the section background -->
+       </aura:if>
+
+    </aura:if>
+
+
+
+
+
+
+</aura:component>

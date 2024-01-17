@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+         <lightning-input type="text" label="Name" value={getAccountRecord.Name} onchange={nameInpChange}></lightning-input>
+        <lightning-input type="text" label="Phone" value={getAccountRecord.Phone} onchange={phoneInpChange}></lightning-input>
+        <lightning-input type="text" label="Type" value={getAccountRecord.Type} onchange={typeInpChange}></lightning-input>
+        <lightning-input type="text" label="Website" value={getAccountRecord.Website} onchange={websiteInpChange}></lightning-input>
+        <lightning-input type="text" label="Account Site" value={getAccountRecord.Site} onchange={accSiteChange}></lightning-input>       
+        <lightning-button label="Submit" onclick={saveAccountAction} variant="brand"></lightning-button>
+
+     </lightning-card>
+     
+</template>

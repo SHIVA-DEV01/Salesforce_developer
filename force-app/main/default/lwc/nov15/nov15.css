@@ -1,0 +1,5 @@
+.custom-combobox {
+  --sds-c-combobox-color__text: red;
+  --sds-c-combobox-color__border: blue;
+  --sds-c-combobox-color__background: yellow;
+}

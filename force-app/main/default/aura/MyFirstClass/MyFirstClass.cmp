@@ -1,0 +1,7 @@
+<aura:component >
+
+    
+    
+    <lightning:avatar size="large"   src="!$Resource.cloudanalogy" initials="CR" fallbackIconName="standard:person_account" alternativeText="Cindy Rice" class="slds-m-right_small"/>
+
+</aura:component>

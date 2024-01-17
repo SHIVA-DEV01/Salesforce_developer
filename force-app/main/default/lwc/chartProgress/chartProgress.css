@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    padding: 50px 0;
+    border-radius: 8px;
+    background: #fff;
+    row-gap: 30px;
+    flex-direction: column;
+}
+
+.circular-progress {
+    position: relative;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    background: conic-gradient(#2D3436 3.6deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 210px;
+    width: 210px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 40px;
+    font-weight: 600;
+    color: #2D3436;
+}
+
+.vertical-line {
+    width: 2px; 
+    height: 300px; 
+    background-color: #979797; 
+    margin: 0 10px; 
+}
+
+.font-design-pending{
+    color: rgb(235, 130, 11);
+    font-size: 40px;
+    font-weight: bold; 
+}
+
+.font-design{
+    color: green;
+    font-size: 40px;
+    font-weight: bold; 
+}
+
+.card-style{
+    background-color: #ccc; /* Set the background color to grey */
+    border: 1px solid #999; /* Add a 1px solid border with a dark grey color */
+    border-radius: 4px; /* Add rounded corners if desired */
+}

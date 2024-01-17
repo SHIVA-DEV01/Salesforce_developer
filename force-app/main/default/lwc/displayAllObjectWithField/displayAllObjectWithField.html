@@ -1,0 +1,25 @@
+<template >
+    <lightning-card title="Choose Account Name" >
+    
+
+    
+    <div class="slds-m-around_medium">
+    <select class="slds-select" onchange={contactFetch}>
+    <template for:each ={acc} for:item="item">
+    <option key={item.Id} value={item.value}>{item.value}</option>
+    </template>
+    </select>
+    </div>
+ 
+    <div class="slds-m-around_medium">
+    <select class="slds-select" >
+    <template for:each ={con} for:item="item">
+    <option key={item.Id} value={item} label={item.Name}>{item}</option>
+    </template>
+    </select>
+    </div>
+
+    
+   
+</lightning-card>
+</template>

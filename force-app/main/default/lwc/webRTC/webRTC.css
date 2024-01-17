@@ -1,0 +1,63 @@
+/* captureScreen.css */
+
+.video-class {
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+    width: 320px;
+    height: 240px;
+}
+
+.photo-class {
+    border: 1px solid black;
+    box-shadow: 2px 2px 3px black;
+    width: 320px;
+    height: 240px;
+}
+
+.canvas-class {
+    display: none;
+}
+
+.camera-container {
+    width: 340px;
+    display: inline-block;
+}
+
+.output-container {
+    width: 340px;
+    display: inline-block;
+}
+
+.startbutton {
+    display: inline-block;
+    position: relative;
+    margin-left: 60px;
+    margin-right: auto;
+    bottom: 22px;
+    background-color: rgba(0, 150, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    color: rgba(255, 255, 255, 1.0);
+}
+
+.contentarea {
+    font-size: 16px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    width: 760px;
+}
+
+.clearbutton {
+    display: inline-block;
+    position: relative;
+    margin-left: 70px;
+    margin-right: auto;
+    bottom: 22px;
+    background-color: red;
+    border: 1px solid rgba(155, 155, 255, 20);
+    box-shadow: 0px 0px 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 12px;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    color: rgba(255, 255, 255, 1.0);
+}

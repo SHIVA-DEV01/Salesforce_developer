@@ -1,0 +1,33 @@
+<template>
+    <!-- Test !!!!!!
+    {} -->
+    <div class="slds-grid slds-wrap">
+        <template for:each={products} for:item="pro">
+            <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-10" key={pro.id}>
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">
+                    <lightning-card>
+                        h1
+
+
+                        <h3 slot="title">
+                            <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                            Card Title
+                        </h3>
+                        <div slot="footer">
+                            <lightning-badge label={pro.Name}></lightning-badge>
+                            <lightning-badge label="Tag2"></lightning-badge>
+                            <lightning-badge label="Tag3"></lightning-badge>
+                        </div>
+                        <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+
+
+
+
+                    </lightning-card>
+                </div>
+            </div>
+        </template>
+    </div>
+
+
+</template>

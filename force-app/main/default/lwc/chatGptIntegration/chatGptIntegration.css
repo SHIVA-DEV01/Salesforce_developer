@@ -1,0 +1,38 @@
+.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+		 background-color: white;
+        background-image: linear-gradient(to right, white, green);
+    }
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+		align-items: center;
+        margin-bottom: 20px;
+    }
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+    input {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+    }
+	.form-container{
+        height: 200px;
+        background-color: white;
+        background-image: linear-gradient(to right, white, green);
+    }
+	.btn{
+		align-items: center;
+	}

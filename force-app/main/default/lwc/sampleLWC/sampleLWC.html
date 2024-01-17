@@ -1,0 +1,25 @@
+<template>
+    <div>
+        <select onchange={handleDropdownChange}>
+            <option value="Select Customer">Select Customer</option>
+            <template for:each={dropdownOptions} for:item="option">
+                <option key={option} value={option}>{option}</option>
+            </template>
+        </select>
+        <div if:true={accCode}>
+            <label for="acccode">Enter Customer Account Code</label>
+            <input id="acccode" type="text" value={accCode} disabled></input>
+        </div>
+        <div>
+            <label for="sdate">Enter Start Date (20080101)</label>
+            <input id="sdate" type="text" value={startDate} oninput={handleStartDateChange}></input>
+        </div>
+        <div>
+            <label for="edate">Enter End Date (20080101)</label>
+            <input id="edate" type="text" value={endDate} oninput={handleEndDateChange}></input>
+        </div>
+        <div>
+            <button onclick={handleGoClick}>Go</button>
+        </div>
+    </div>
+</template>

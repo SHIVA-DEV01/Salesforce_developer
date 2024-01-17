@@ -1,0 +1,46 @@
+<apex:page Controller="displaysObject" lightningStylesheets="true">
+    <apex:form >
+    	<apex:pageBlock >
+        	<apex:pageBlockSection >
+            	<apex:selectList multiselect="false" size="1" value="{!selectedname}"  >
+                    <apex:selectOption itemValue="--None--"/>
+                    <apex:selectOptions value="{!selectedfields}"/>
+				</apex:selectList>
+                </apex:pageBlockSection>  
+            <apex:pageBlockButtons location="bottom">
+             	<apex:commandButton value="Show Table" action="{!ShowTable}" />  
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Detail">
+    				<apex:dataTable value="{!accList}" var="acc">
+                        <apex:column value="{!acc.name}" headerValue="Name"/> 
+                        <apex:column value="{!acc.NumberOfEmployees}" headerValue="Number Of Employees"/>
+                        <apex:column value="{!acc.AnnualRevenue}" headerValue="Annual Revenue"/>
+                        <apex:column value="{!acc.Industry}" headerValue="Industry"/>
+                    </apex:dataTable>
+			</apex:pageBlockSection>
+    				
+            
+            <apex:pageBlockSection title="Contact Detail">
+            		<apex:dataTable value="{!conList}" var="con">
+                    <apex:column value="{!con.FirstName}" headerValue="First Name" />
+                    <apex:column value="{!con.name}" headerValue="Name" />
+                    <apex:column value="{!con.MobilePhone}" headerValue="Mobile Phone" />
+                    <apex:column value="{!con.Email}" headerValue="Email" />
+                    </apex:dataTable>
+			</apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Opportunity Detail">
+            		<apex:dataTable value="{!oppList}" var="opp">
+                        <apex:column value="{!opp.name}" headerValue="Name" /> 
+                        <apex:column value="{!opp.StageName}" headerValue="StageName" /> 
+                        <apex:column value="{!opp.CloseDate}" headerValue="CloseDate"/> 
+                        <apex:column value="{!opp.Amount}" headerValue="Amount" /> 
+                    </apex:dataTable>
+            </apex:pageBlockSection>
+            
+
+            
+     
+     </apex:pageBlock>       
+    </apex:form>
+</apex:page>

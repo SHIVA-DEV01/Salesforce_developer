@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="Audio Player">
+        <template if:true={resultData}>
+            <ul>
+                <template for:each={resultData} for:item="attachment">
+                    <li key={attachment.Id}>
+                        <audio accesskey="acc" aura-id="audioPlayer" controls >
+                            <source src={attachment.VersionDataUrl} type="audio/mp3" />
+                            Your browser does not support the audio element.
+                        </audio>
+                    </li>
+                </template>
+            </ul>
+        </template>
+        <template if:false={resultData}>
+            
+            No audio attachments found.
+        </template>
+        
+    </lightning-card>
+    <div>First <slot name="task1">Task 1</slot></div>
+</template>

@@ -1,0 +1,15 @@
+<apex:page Controller="SearchInVFController2">
+    <apex:form style="margin-top : 200px; margin-left : 500px">
+        
+        <h1 style="margin-left : 56px; font-size : 100px; font-family: monospace;">Contact</h1><br/> <apex:inputText value="{!searchKey}" style="width : 501px; height : 29px; font-family: monospace;"/><br/>
+        <apex:commandButton value="Add" action="{!search}" style="margin-top: 20px; margin-left: 80px; margin-right: 70px; width: 130px; height: 29px; font-family: monospace; font-size: 15px"/>
+        <apex:commandButton value="Clear" action="{!clear}" style=" width: 130px; height: 29px; font-family: monospace; font-size: 15px"/><br/>
+        
+        
+        <h1 style="margin-top: 40px">Contact  Account Name</h1> =  <apex:outputText value="{!second}" style="margin-top:40px">
+        
+        
+        
+        </apex:outputText>
+    </apex:form>
+</apex:page>

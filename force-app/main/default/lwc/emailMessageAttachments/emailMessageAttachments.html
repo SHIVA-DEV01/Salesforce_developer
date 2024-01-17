@@ -1,0 +1,78 @@
+<template>
+
+	<lightning-card title="Export Attachments">
+		<template if:true={objectButtonDis}>
+			<div class="slds-grid slds-wrap">
+				<div class="slds-col">
+					<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+						<lightning-combobox name="Select_Object" label="Select Object" value={selectedobjname} placeholder="Select Object"
+							options={options} onchange={selectobject}>
+						</lightning-combobox>
+					</div>
+				</div>
+			</div>
+
+			<div class="slds-grid slds-wrap">
+				<div class={filterCss}>
+					<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">
+						<lightning-combobox name="Select_Filter" label="Select Filter" placeholder="Select Date"
+							options={filterOptions} value={filter} onchange={selectobject}>
+						</lightning-combobox>
+					</div>
+				</div>
+				<template if:true={customFilter}>
+					<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-3">
+						<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">
+							<lightning-input type="date" name="From" value={startDate} label="Start Date"
+								onchange={selectobject}>
+							</lightning-input>
+						</div>
+					</div>
+					<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-3">
+						<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around--x-small">
+							<lightning-input type="date" name="End" value={endDate} label="End Date"
+								onchange={selectobject}>
+							</lightning-input>
+						</div>
+					</div>
+				</template>
+			</div>
+
+
+			<lightning-button variant='brand' label="Confirm" onclick={confirm} disabled={buttonDis}
+				class="slds-m-left_medium"></lightning-button>
+
+		</template>
+		<template if:false={objectButtonDis}>
+			<div class="exampleHolder">
+				<template if:true={loaded}>
+					<div class="slds-grid slds-wrap">
+						<div class="slds-col slds-size_4-of-5">
+
+							<lightning-button variant="brand" title="Primary action" label="Convert to Zip"
+								onclick={handleConvertToZip} disabled={buttonDis} class="slds-m-left_medium">
+							</lightning-button>
+
+							<lightning-button variant='brand' label="Download Csv Report" onclick={generateCsv}
+								disabled={buttonDis} class="slds-m-left_medium"></lightning-button>
+
+						</div>
+						<div class="slds-col slds-size_1-of-5">
+							<div class="slds-grid slds-wrap">
+								<div class="slds-col slds-size_2-of-3">
+									<lightning-button variant='brand' label="Back" onclick={gotohome}
+										class="slds-m-left_medium"></lightning-button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</template>
+				<template if:false={loaded}>
+					<div class="spindiv">
+					<lightning-spinner variant="brand" alternative-text="Loading" class="spins"></lightning-spinner>
+					</div>
+				</template>
+			</div>
+		</template>
+	</lightning-card>
+</template>

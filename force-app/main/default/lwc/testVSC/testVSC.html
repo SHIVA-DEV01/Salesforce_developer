@@ -1,0 +1,18 @@
+<template>
+    <lightning-input type="text" variant="standard" name="name" label="label" placeholder="type here..."></lightning-input>
+
+    <lightning-card  variant="Narrow"  title="Hello" icon-name="standard:account">
+        <lightning-button-icon  icon-name="utility:down" variant="border-filled" alternative-text="Show More" slot="actions"></lightning-button-icon>
+        <p class="slds-p-horizontal_small">Card Body Narrow (custom component)</p>
+        <p slot="footer">Card Footer</p>
+    </lightning-card>
+
+    <template if:true={contacts} iterator:contacts={contacts}>
+        <li key={iteratorName.value.Id}>
+            <div if:true={iteratorName.first} class="list-first"></div>
+                <!--{iteratorName.value.propertyName}-->
+                {iteratorName.value.Name}
+            <div if:true={iteratorName.last} class="list-last"></div>
+        </li>
+    </template>
+</template>

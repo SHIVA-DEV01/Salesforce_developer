@@ -1,0 +1,16 @@
+<!-- attachmentComponent.html -->
+<template>
+    <lightning-card title="Attachments">
+        <div class="slds-m-around_medium">
+            <template for:each={formattedAttachments} for:item="attachment">
+                <div key={attachment.Id} class="slds-p-vertical_small">
+                    <lightning-input type="checkbox" name="selectedAttachments" label={attachment.Name} value={attachment.Id} onchange={handleCheckboxChange}></lightning-input>
+                    {attachment.Name} ({attachment.formattedSize})
+                </div>
+            </template>
+        </div>
+        <div class="slds-m-around_medium">
+            <lightning-button label="Download Selected" onclick={downloadSelectedAttachments}></lightning-button>
+        </div>
+    </lightning-card>
+</template>

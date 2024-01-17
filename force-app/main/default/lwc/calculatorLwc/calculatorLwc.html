@@ -1,0 +1,55 @@
+<template>
+    <!-- <lightning-card title="Calculator from Shiva Verma">
+        <div class="slds-p-around_small">
+            <lightning-input label="First Number" type="number" name="Number1" value={num1}
+                onchange={onInputChangeHandler} required></lightning-input><br>
+            <lightning-input label="Second Number" type="number" name="Number2" value={num2}
+                onchange={onInputChangeHandler} required></lightning-input><br>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item padding="around-small">
+                    <lightning-button label="Add" variant="Brand" onclick={onButtonCLick}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <lightning-button label="Subtract" variant="Brand" onclick={onButtonCLick}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <lightning-button label="Multiply" variant="Brand" onclick={onButtonCLick}></lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <lightning-button label="Divide" variant="Brand" onclick={onButtonCLick}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            Result = {result}
+        </div>
+    </lightning-card> -->
+
+
+
+    <h1 style="text-align:center;color:rgb(22, 14, 233);font-size:x-large">Calculator</h1><br/><br/>
+            <pre style="text-align:center;color:darkslategray">
+        <lightning-input type="integer" label="Enter first number" onchange={input1} pattern="[0-9]+"
+        message-when-pattern-mismatch="Special Characters not allowed" ></lightning-input>
+        <lightning-input type="integer" label="Enter second number" onchange={input2} ></lightning-input>
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item padding="around-small">
+        <lightning-button label="Add" variant="brand" onclick={Adding} ></lightning-button>
+    </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+        <lightning-button label="Sub" variant="brand" onclick={Subtract} ></lightning-button>
+    </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+        <lightning-button label="Mul" variant="brand" onclick={Multiply} ></lightning-button>
+    </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+        <lightning-button label="Div" variant="brand" onclick={Divide} ></lightning-button><br/>
+    </lightning-layout-item>
+    </lightning-layout>
+    </pre>
+        
+       <h1 style="font-size:large;color:green;text-align:center">result  :::  {output} </h1>
+
+
+
+
+
+</template>

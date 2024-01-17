@@ -1,0 +1,23 @@
+<template>
+	<div class="form-container">
+		  <div class="container">
+        <h2>Welcome to Navneet's World !!</h2>
+        <div class="input-wrapper">
+            <label>Search</label>
+            <input type="text" class="input-field" id="name" onkeypress={handleKeyDown}/>
+        </div>
+    </div>
+		<template if:false={showSpinner}>
+			<h2>
+				<lightning-formatted-text value={responseData}></lightning-formatted-text>
+			</h2>
+		</template>
+		<template if:true={showSpinner}>
+			<lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+		</template>
+		<br>
+	<div class="container">
+		<button onclick={handleSubmit}>Submit</button>
+	</div>
+	</div>
+</template>

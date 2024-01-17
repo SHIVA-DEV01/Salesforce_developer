@@ -1,0 +1,231 @@
+<template>
+	<lightning-card variant="narrow" icon-name="standard:opportunity">
+
+		<!-- REQUIRED SLDS WRAPPER -->
+		<div class="slds-scope">
+
+			<!-- PRIMARY CONTENT WRAPPER -->
+
+			<!-- RESPONSIVE GRID EXAMPLE -->
+			<div class="myapp">
+				<div class="slds-grid slds-wrap slds-m-horizontal_xx-large">
+					<div
+						class="slds-col slds-size--1-of-1 slds-small-size--4-of-4 slds-medium-size--8-of-8 slds-large-size--8-of-8">
+						<div class="slds-float_right">
+							<lightning-button variant="brand-outline" label="View Documents" title="View Documents"
+								onclick={handleClick}></lightning-button>
+						</div>
+
+					</div>
+					<div
+						class="slds-col slds-size--1-of-1 slds-small-size--2-of-4 slds-medium-size--4-of-8 slds-large-size--2-of-8">
+						<div class="slds-card container">
+							<div class="circular-progress slds-grid" style={circleStyle}>
+								<span class="progress-value">{progressValue}%</span>
+							</div>
+						</div>
+					</div>
+					<div
+						class="slds-col slds-size--1-of-1 slds-small-size--3-of-4 slds-medium-size--4-of-8 slds-large-size--2-of-8 container">
+
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="slds-text-heading_medium slds-m-top_small">Pending</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design-pending slds-text-heading_medium">2</h1>
+							</div>
+						</div>
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="slds-text-heading_medium slds-m-top_small">Submitted</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design slds-text-heading_medium">2</h1>
+							</div>
+						</div>
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2 ">
+								<h1 class="slds-text-heading_medium slds-m-top_small">Accepted</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design slds-text-heading_medium">1</h1>
+							</div>
+						</div>
+					</div>
+					<div
+						class="slds-col slds-size--1-of-1 slds-small-size--2-of-4 slds-medium-size--4-of-8 slds-large-size--2-of-8 container">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="slds-text-heading_medium slds-m-top_medium">Expiring within 7 Days</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design heading_medium">0</h1>
+							</div>
+						</div>
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="slds-text-heading_medium slds-m-top_medium">Expiring within 30 Days</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design heading_medium">0</h1>
+							</div>
+						</div>
+					</div>
+					<div
+						class="slds-col slds-size--1-of-1 slds-small-size--2-of-4 slds-medium-size--4-of-8 slds-large-size--2-of-8 container">
+						<div class="slds-grid slds-wrap">
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="slds-text-heading_medium slds-m-top_medium">Documents</h1>
+							</div>
+							<div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-2">
+								<h1 class="font-design heading_medium">5</h1>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<!-- / RESPONSIVE GRID EXAMPLE -->
+		</div>
+	</lightning-card>
+
+	<template if:true={isShowModal}>
+
+
+
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+			aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_large">
+			<div class="slds-modal__container">
+				<!-- modal header start -->
+				<header class="slds-modal__header">
+					<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={hideModalBox}>
+                <lightning-icon icon-name="utility:close"
+                   alternative-text="close"
+                   variant="inverse"
+                   size="small" ></lightning-icon>
+                <span class="slds-assistive-text">Close</span>
+             </button>
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Welcome in Apex Hours</h2>
+				</header>
+
+				<!-- modal body start -->
+				<div style="height: 500px;">
+					<lightning-datatable key-field="id" data={recordsToDisplayCurrent} columns={columns}
+						class='slds-max-medium-table_stacked' hide-checkbox-column="true">
+					</lightning-datatable>
+				</div>
+
+				<!-- <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					<p>Modal/Popup in Lightning Web Component (LWC) Demo</p>
+				</div> -->
+
+				<!-- modal footer start-->
+				<footer class="slds-modal__footer">
+					<!-- <div class="slds-scope">
+						<div class="myapp">
+							<div class="slds-grid slds-wrap slds-m-horizontal_xx-large">
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--2-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									<label class="slds-text-color_weak slds-p-horizontal_x-small"
+                                        for="recordsPerPageCurrent">Page
+                                        Size:</label>
+									<div class="slds-select_container">
+										<select class="slds-select" id="recordsPerPageCurrent"
+                                            onchange={handleCurrentRecordsPerPage} name="pageNumberField">
+                                            <template for:each={pageSizeOptionsCurrent} for:item="option">
+                                                <option key={option} value={option}>{option}</option>
+                                            </template>
+                                        </select>
+									</div>
+								</div>
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									<div>
+									<lightning-button disabled={bDisableFirstCurrent} icon-name="utility:jump_to_left"
+										label="First" class="slds-p-horizontal_x-small" alternative-text="first page"
+										onclick={currentFirstPage}>
+									</lightning-button>
+									<lightning-button disabled={bDisableFirstCurrent} icon-name="utility:chevronleft"
+										label="Previous" alternative-text="Previous" onclick={currentPreviousPage}>
+									</lightning-button>
+									</div>
+								</div>
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--3-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									&nbsp;
+									<span class="slds-badge">Showing {pageNumberCurrent} &nbsp;of&nbsp; {totalPagesCurrent}
+                                    &nbsp;&nbsp;Page(s)</span>
+									&nbsp;
+								</div>
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--2-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									<lightning-button disabled={bDisableLastCurrent} icon-name="utility:chevronright"
+										label="Next" alternative-text="Next" onclick={currentNextPage}
+										class="slds-p-horizontal_x-small" icon-position="right"></lightning-button>
+									<lightning-button disabled={bDisableLastCurrent} icon-name="utility:jump_to_right"
+										label="Last" alternative-text="last page" onclick={currentLastPage}
+										icon-position="right">
+									</lightning-button>
+								</div>
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--1-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									<span class="slds-badge"> Total Records: {totalRecordsCurrent}</span>
+								</div>
+								<div
+									class="slds-col slds-size--1-of-1 slds-small-size--3R-of-3 slds-medium-size--1-of-4 slds-large-size--1-of-6">
+									<button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<!--PAGE NAVIGATION-->
+					<div class="slds-align_absolute-center" style="height:5rem">
+						<div class="slds-list_inline slds-p-bottom_xx-small">
+							<label class="slds-text-color_weak slds-p-horizontal_x-small"
+                                        for="recordsPerPageCurrent">Page
+                                        Size:</label>
+							<div class="slds-select_container">
+								<select class="slds-select" id="recordsPerPageCurrent"
+                                            onchange={handleCurrentRecordsPerPage} name="pageNumberField">
+                                            <template for:each={pageSizeOptionsCurrent} for:item="option">
+                                                <option key={option} value={option}>{option}</option>
+                                            </template>
+                                        </select>
+							</div>
+						</div>
+						<lightning-button disabled={bDisableFirstCurrent} icon-name="utility:jump_to_left" label="First"
+							class="slds-p-horizontal_x-small" alternative-text="first page" onclick={currentFirstPage}>
+						</lightning-button>
+						<lightning-button disabled={bDisableFirstCurrent} icon-name="utility:chevronleft"
+							label="Previous" alternative-text="Previous" onclick={currentPreviousPage}>
+						</lightning-button>
+						&nbsp;
+						<span class="slds-badge">Showing {pageNumberCurrent} &nbsp;of&nbsp; {totalPagesCurrent}
+                                    &nbsp;&nbsp;Page(s)</span>
+						&nbsp;
+						<lightning-button disabled={bDisableLastCurrent} icon-name="utility:chevronright" label="Next"
+							alternative-text="Next" onclick={currentNextPage} class="slds-p-horizontal_x-small"
+							icon-position="right"></lightning-button>
+						<lightning-button disabled={bDisableLastCurrent} icon-name="utility:jump_to_right" label="Last"
+							alternative-text="last page" onclick={currentLastPage} icon-position="right">
+						</lightning-button>
+						<div class="slds-clearfix">
+							<div class="slds-float_right">
+								<span class="slds-badge"> Total Records: {totalRecordsCurrent}</span>
+							</div>
+						</div>
+						<div class="slds-float_right">
+							<button class="slds-button slds-button_neutral" onclick={hideModalBox}>Cancel</button>
+						</div>
+					</div>
+					<!--TOTAL RECORDS-->
+
+
+				</footer>
+
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</template>
+</template>

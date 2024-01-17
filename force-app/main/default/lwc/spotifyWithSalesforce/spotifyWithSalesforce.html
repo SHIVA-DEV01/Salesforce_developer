@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Spotify Top Tracks">
+        <div class="slds-p-around_medium">
+            {topTracks}
+            <template if:true={topTracks}>
+                <ul class="slds-list_ordered">
+                    <template for:each={topTracks} for:item="track">
+                        {topTracks}
+                        <li key={track.id} class="slds-p-bottom_small">
+                            <div class="slds-media slds-media_center">
+                                <!-- <div class="slds-media__figure">
+                                    <img src={track.imageUrl} alt={track.name} class="track-image" />
+                                </div> -->
+                                <div class="slds-media__body">
+                                    <h3 class="slds-text-heading_small">{track.name}</h3>
+                                    <p class="slds-text-body_small">{track.artistName}</p>
+                                    <audio controls>
+                                        <source src={track.preview_url} type="audio/mpeg" />
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+            <template if:false={topTracks}>
+                <p>No top tracks found.</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

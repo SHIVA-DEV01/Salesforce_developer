@@ -1,0 +1,65 @@
+<aura:component implements = "force:hasRecordId" controller="SendEmailTemplatePopC" >
+    <aura:attribute name="password" type="String"/>
+        <aura:attribute name="username" type="String"/>
+            <aura:attribute name="name" type="String"/>
+
+            <aura:attribute name="OTP" type="String"/>
+            <aura:attribute name="Gen" type="String"/>
+<h1 style="text-align: center;">
+    
+    Sign UP
+    </h1>
+
+    <aura:attribute name="showpassword" type="Boolean" default="false"/>
+     <div class="slds-form-element slds-p-around_large">
+      
+                                 <lightning:input type="String" name="input1" label="Enter your name" value="{!v.name}" required="true" />
+
+         
+         
+         
+         
+    
+                        <lightning:input type="String" name="input1" label="Enter a Email" value="{!v.username}" required="true" />
+                                 <lightning:input type="String" name="OTP" label="Enter the OTP" value="{!v.OTP}" required="true"/> 
+             <div class="slds-form-element buttons slds-text-align_right">
+
+         
+
+
+<lightning:button class="slds-button slds-button_success" onclick = "{!c.sendDetails}" label="OTP">
+                        
+ </lightning:button>
+
+
+         </div>
+         
+
+         
+    </div>
+
+    <div class="slds-form-element slds-p-around_large">
+        <label class="slds-form-element__label" for="password_field">Password</label>
+        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+
+            
+            
+            
+            <lightning:input variant = "label-hidden" type="{!v.showpassword ? 'text':'password'}" 
+                             aura:id="password_field" value="{!v.password}" label ="Enter a Password"  required="true"/>                                    
+            <lightning:buttonIcon class="slds-button slds-input__icon slds-text-color--default" 
+                                  iconName="{!v.showpassword ? 'utility:hide':'utility:preview'}" 
+                                  alternativeText="{!v.coborrowerSSNCB ? 'Hide':'Show'}" 
+                                  onclick="{!c.togglePassword}"/>
+        </div>
+    </div>
+    <div class="slds-form-element buttons slds-text-align_center">
+
+    <lightning:button label="Signup" iconName="utility:login" iconPosition="center" class="slds-button slds-button_brand" onclick="{! c.handleClick }" />
+</div>
+    
+    
+    
+    
+    
+</aura:component>

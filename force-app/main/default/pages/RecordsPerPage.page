@@ -1,0 +1,18 @@
+<apex:page standardController="Account" recordSetvar="accounts" lightningStylesheets="true">
+  <apex:pageBlock title="Viewing Accounts">
+  <apex:form id="theForm">
+    <apex:pageBlockSection >
+      <apex:dataList var="a" value="{!accounts}" type="1" rows="10">
+        {!a.name}
+      </apex:dataList>
+    </apex:pageBlockSection>
+    <apex:panelGrid columns="3">
+      <!--<apex:commandLink action="{!previous}">Previous</apex:commandlink>-->
+      <!--<apex:commandLink action="{!next}">Next</apex:commandlink>-->
+      <apex:commandButton action="{!previous}" value="Previous"/>
+      <apex:commandButton action="{!next}" value="Next"/>
+      <!--<apex:commandButton action="{!next}" value="addnew"/>  -->
+    </apex:panelGrid>
+  </apex:form> 
+  </apex:pageBlock>
+</apex:page>

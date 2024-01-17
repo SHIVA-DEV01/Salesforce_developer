@@ -1,0 +1,10 @@
+<template>
+    <lightning-card variant="Narrow" title="Account Pub" icon-name="standard:account"></lightning-card>
+
+    <template if:true={viewAccounts} for:each={viewAccounts} for:item="acc">
+        <!-- <li key={con.Id}>{con.Name}</li> -->
+
+        <lightning-input type="checkbox" key={acc.Id} variant="standard" name="name" data-id={acc.Id} label={acc.Name} onchange={handleChange}></lightning-input>
+
+    </template>
+</template>

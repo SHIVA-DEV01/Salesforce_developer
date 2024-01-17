@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+        <lightning-record-edit-form object-api-name="Opportunity" onsuccess={handleSuccess}>
+            <template if:true={data}>
+                <template for:each={data} for:item="dat">
+                    <div key={dat.id}>
+                        
+                        <lightning-input-field field-name={dat.label}></lightning-input-field>
+                        <!-- <lightning-input label={dat.dataType} type={dat.fieldApi}></lightning-input> -->
+                        <!-- <p>{dat.id}</p> -->
+    
+                    </div>
+                </template>
+            </template>      
+            <template if:true={dataref}>
+
+                        <!-- <p>In second part of if{dataref}</p> -->
+                        <template for:each={dataref} for:item="dat">
+                            <div key={dat.id}>
+                        <lightning-input-field field-name={dat.label} ></lightning-input-field>
+                        <!-- <lightning-input label={dat.dataType} type={dat.fieldApi}></lightning-input> -->
+                        <!-- <p>{dat.id}</p> -->
+                    </div>
+                    </template>
+    
+            </template> 
+            <template if:true={pickListData}>
+                <lightning-combobox name="progress" label="Opportunity Owner" value={valueOwner} placeholder="-Select-"
+                options={pickListData.pickListValue} >
+            </lightning-combobox>
+            </template>
+            <lightning-button id="submit" type="submit" label="Save" class="slds-m-top_medium"></lightning-button>
+        </lightning-record-edit-form>
+        
+        <!-- <p>Hello this is Dynamic Form Which is creat by Shiva</p> -->
+    </lightning-card>
+</template>

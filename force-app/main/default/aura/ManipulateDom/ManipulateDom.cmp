@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="buttonValue" type="String" />
+
+    <!-- Button with an aura:id attribute and a click event handler -->
+    <lightning:button aura:id="myButton1" name="myButton" label="Click Me" onclick="{!c.handleClick}" />
+
+    <!-- Output to display the button value -->
+    <p>Button Value: {!v.buttonValue}</p>
+</aura:component>

@@ -1,0 +1,16 @@
+<template>
+  <div class="game">
+    <h1>My Simple Game</h1>
+    <div class="board">
+      <template for:each={gameBoard} for:item="row">
+        <div key={row} class="row">
+          <template for:each={row} for:item="cell">
+            <div key={cell.id} class={cell.status} onclick={handleCellClick} data-cell-id={cell.id}>
+            </div>
+          </template>
+        </div>
+      </template>
+    </div>
+    <button class="reset-button" onclick={handleReset}>Reset Game</button>
+  </div>
+</template>

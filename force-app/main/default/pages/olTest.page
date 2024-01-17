@@ -1,0 +1,5 @@
+<apex:page >
+<apex:outputLink value="/apex/PageName">Link using apex:outputlink</apex:outputlink>
+<a href="{!URLFOR($Site.prefix)}">Link using URLFOR()</a>
+
+</apex:page>

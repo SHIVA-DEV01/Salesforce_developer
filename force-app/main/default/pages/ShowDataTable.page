@@ -1,0 +1,10 @@
+<apex:page Controller="FetchAccountData">
+    <apex:pageBlock >
+        <apex:pageBlockSection title="Account List">
+            <apex:pageBlockTable value="{!accounts}" var="acc" >
+                <apex:column value="{!acc.Name}"/>
+                <apex:column value="{!acc.Phone}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>

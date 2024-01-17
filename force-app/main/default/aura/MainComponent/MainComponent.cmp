@@ -1,0 +1,14 @@
+<aura:component >
+ <aura:attribute name="profile" type="boolean"></aura:attribute>
+ <aura:attribute name="userNameMainComp" type="String"></aura:attribute>
+        <div>
+    <c:Header Show = "{!v.profile}" userNameHeader = "{!v.userNameMainComp}"/>
+    </div>
+
+<c:MainBody showHead = "{!v.profile}" usernameBody = "{!v.userNameMainComp}"></c:MainBody>
+
+
+
+
+
+</aura:component>

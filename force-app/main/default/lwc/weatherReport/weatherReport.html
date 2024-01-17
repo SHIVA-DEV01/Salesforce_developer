@@ -1,0 +1,329 @@
+<template>
+  <div class="card-wrapper">
+    <div class="slds-grid slds-wrap">
+      <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--3-of-5">
+        <div class="slds-card">
+          <div class="slds-card__header slds-grid">
+            <div class="slds-media slds-media_center slds-has-flexi-truncate">
+              <div class="slds-media__figure">
+                <lightning-icon icon-name={icon} size="small"></lightning-icon>
+              </div>
+              <div class="slds-media__body">
+                <h2 class="slds-text-heading_small slds-truncate">{currentlocationObj.name}</h2>
+              </div>
+            </div>
+          </div>
+          <div class="slds-card__body">
+            <div class="slds-media">
+              <div class="slds-media__figure">
+                <img src={icon} alt="Weather Icon" />
+              </div>
+              <div class="slds-media__body">
+                <h3 class="slds-text-heading_small">{text}</h3>
+                <p class="temperature" style={temperatureStyle}>{currentdataObj.temp_c}&deg;C</p>
+                <div class="slds-grid slds-wrap">
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Humidity:
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.humidity}%
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Wind:
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.wind_kph} kph
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Pressure:
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.pressure_mb} mb
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Cloud Cover:
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.cloud}%
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Wind Direction:
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.wind_dir}
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          Feels Like :
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                    <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                      <span>
+                        <p class="other-info">
+                          {currentdataObj.feelslike_c}&deg;C
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--2-of-5">
+        <div class="slds-card">
+          <div class="slds-card__header slds-grid slds-align_absolute-center">
+            <h2 class="slds-text-heading_medium">{currentlocationObj.name}</h2>
+          </div>
+          <div class="slds-card__body">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      Temperature:
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      {currentdataObj.temp_f}&deg;F
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      Humidity:
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      {currentdataObj.humidity}%
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      Wind Speed
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      {currentdataObj.wind_kph} km/h
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      Visibility
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      {currentdataObj.vis_km} km
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      UV Index
+                    </p>
+                  </span>
+                </div>
+              </div>
+              <div class="slds-col slds-size--1-of-2 slds-small-size--1-of-2 slds-medium-size--2-of-8">
+                <div class=" slds-text-align_center slds-m-around--x-small slds-text-heading_large">
+                  <span>
+                    <p class="other-info">
+                      {currentdataObj.uv}
+                    </p>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">Temperature</p>
+            <p>{currentdataObj.temp_c} &deg;C</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">Humidity</p>
+            <p>{airDetail.humidity}%</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">Wind Speed</p>
+            <p>{airDetail.wind_kph} km/h</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">Air Pressure</p>
+            <p>{currentdataObj.pressure_in} in</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">Visibility</p>
+            <p>{currentdataObj.vis_km} km</p>
+          </div>
+          <div class="slds-col slds-size_1-of-2">
+            <p class="slds-text-heading_small">UV Index</p>
+            <p>{currentdataObj.uv}</p>
+          </div>
+        </div> -->
+          </div>
+        </div>
+      </div>
+      <div
+        class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--3-of-5 slds-medium-size_1-of-2 slds-m-top_medium">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+          <thead>
+            <tr>
+              <th class="slds-cell-wrap">Date</th>
+              <th class="slds-cell-wrap">Weather</th>
+              <th class="slds-cell-wrap">Min Temp(&deg;C)</th>
+              <th class="slds-cell-wrap">Max Temp(&deg;C)</th>
+              <!-- Add more columns as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={weatherForecastData} for:item="day">
+              <tr key={day.date}>
+                <td class="slds-cell-wrap">{day.date}</td>
+                <td>
+                  <div class="slds-media">
+                    <div class="slds-media__figure">
+                      <img src={day.icon} alt={day.weather} />
+                    </div>
+                  </div>
+                </td>
+                <td class="slds-cell-wrap">{day.min_temp}</td>
+                <td class="slds-cell-wrap">{day.max_temp}</td>
+                <!-- Add more columns as needed -->
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+
+      <div
+        class="slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--2-of-5 slds-medium-size_1-of-2 slds-m-top_medium">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+          <thead>
+            <tr>
+              <th class="slds-cell-wrap">Date</th>
+              <th class="slds-cell-wrap">Avg UV Index</th>
+              <th class="slds-cell-wrap">Avg Wind Speed(kph)</th>
+              <th class="slds-cell-wrap">Avg Visibility(km)</th>
+              <!-- Add more columns as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={airForecastData} for:item="day">
+              <tr key={day.date}>
+                <td class="slds-cell-wrap">{day.date}</td>
+                <td class="slds-cell-wrap">
+                  {day.uv}
+                </td>
+                <td class="slds-cell-wrap">{day.wind}</td>
+                <td class="slds-cell-wrap">{day.vis}</td>
+                <!-- Add more columns as needed -->
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</template>

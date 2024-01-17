@@ -1,0 +1,11 @@
+<aura:component controller="testingController">
+    <!--<aura:attribute name="gg" type="String" />
+    <lightning:input name="Input1" type="String" value="{!v.gg}" label="Enter your name" onchange="{!c.Action}" />
+    <aura:attribute name="gg1" type="String" />
+    {!v.gg1}-->
+
+    <aura:attribute name="accData" type="Account" />
+    <aura:handler name="init" value="{!this}" action="{!c.invoke}" />
+    {!accData.Name}
+    
+</aura:component>

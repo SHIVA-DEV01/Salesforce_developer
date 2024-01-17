@@ -1,0 +1,32 @@
+<template>
+    <!-- <button class="slds-button slds-button_outline-brand">All Logs</button>
+    <button class="slds-button slds-button_outline-brand">Call Logs</button>
+    <button class="slds-button slds-button_outline-brand">Fax Logs</button> -->
+
+    <div class="slds-scope">
+            <div class="slds-grid slds-wrap">
+              <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-5">
+                <button class="slds-button slds-button_outline-brand" onclick={allLogsHandler}>All Logs</button>
+              </div>
+              <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-5">
+                <button class="slds-button slds-button_outline-brand" onclick={callLogsHandler}>Call Logs</button>
+              </div>
+              <div class="slds-col slds-size--1-of-1 slds-small-size--1-of-2 slds-medium-size--1-of-5">
+                <button class="slds-button slds-button_outline-brand" onclick={faxLogsHandler}>Fax Logs</button>
+              </div>
+            </div>
+      </div>
+      <div class="slds-m-top_large">
+        <template lwc:if={allLogsBool}>
+            <c-ring-central-call-logs-comp></c-ring-central-call-logs-comp>
+            <c-ring-central-fax-logs-comp></c-ring-central-fax-logs-comp>
+          </template>
+          <template lwc:if={callLogsBool}>
+            <c-ring-central-call-logs-comp></c-ring-central-call-logs-comp>
+          </template>
+          <template lwc:if={faxLogsBool}>
+            <c-ring-central-fax-logs-comp></c-ring-central-fax-logs-comp>
+          </template>
+      </div>
+
+</template>

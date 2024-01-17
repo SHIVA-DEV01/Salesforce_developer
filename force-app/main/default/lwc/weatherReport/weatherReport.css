@@ -1,0 +1,102 @@
+.slds-card {
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0.5rem 0.5rem;
+  flex: 1;
+}
+
+.card-wrapper {
+  display: flex;
+}
+
+.slds-card__header {
+  padding: 0.5rem;
+  border-bottom: 1px solid #d8dde6;
+}
+
+.slds-media__figure {
+  margin-right: 0.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.weather-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.weather-condition {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.temperature {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  color: #0070d2;
+}
+.other-info {
+  font-size: 1rem;
+  color: #666666;
+  margin-top: 0.5rem;
+}
+
+.other-info span {
+  font-weight: bold;
+  color: #333333;
+}
+
+@media (max-width: 480px) {
+  .slds-card {
+      padding: 0.75rem;
+  }
+
+  h2 {
+      font-size: 1rem;
+  }
+
+  .temperature {
+      font-size: 1.25rem;
+  }
+
+  .other-info {
+      font-size: 0.8rem;
+  }
+}
+
+.slds-card {
+  background-color: #f3f5f9;
+}
+
+.slds-card__header {
+  background-color: #f9fafd;
+}
+
+.weather-condition {
+  color: #1e4ddb;
+}
+
+.temperature {
+  color: #1e4ddb;
+}
+
+.other-info span {
+  color: #777777;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .slds-medium-size_1-of-2{
+    margin: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}

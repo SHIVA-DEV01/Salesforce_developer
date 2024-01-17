@@ -1,0 +1,30 @@
+<template>
+    <nav class="slds-nav-vertical">
+        <ul class="slds-nav-vertical__section">
+            <li class="slds-nav-vertical__item">
+                <a onclick={navigateToHomePage}>
+                    <span class="slds-nav-vertical__item-icon slds-icon-waffle">
+                        <lightning-icon icon-name="utility:home" size="small"></lightning-icon>
+                    </span>
+                    <span class="slds-nav-vertical__item-label">Home</span>
+                </a>
+            </li>
+            <li class="slds-nav-vertical__item">
+                <a onclick={navigateToContactPage}>
+                    <span class="slds-nav-vertical__item-icon slds-icon-standard-contact">
+                        <lightning-icon icon-name="standard:contact" size="small"></lightning-icon>
+                    </span>
+                    <span class="slds-nav-vertical__item-label">Contacts</span>
+                </a>
+            </li>
+            <li class="slds-nav-vertical__item">
+                <a onclick={navigateToAccountPage}>
+                    <span class="slds-nav-vertical__item-icon slds-icon-standard-account">
+                        <lightning-icon icon-name="standard:account" size="small"></lightning-icon>
+                    </span>
+                    <span class="slds-nav-vertical__item-label">Accounts</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</template>

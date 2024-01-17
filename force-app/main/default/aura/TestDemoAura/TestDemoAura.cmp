@@ -1,0 +1,52 @@
+<aura:component controller="GoogleAuthService" access="global">
+    <aura:attribute name='PassesValueFromVF' type="string" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="accessToken" type="String" />
+    <!-- <aura:attribute name="Demo" type="Map"></aura:attribute> -->
+    <aura:attribute name="EventList" type="List"></aura:attribute>
+    <aura:attribute name="access" type="String" />
+
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:attribute name="EventInput" type="string" />
+    <lightning:card title="Get Access Token" iconName="{!v.access}">
+        <lightning:button variant="brand" label="Authorize Google" title="Authorize Google" onclick="{! c.doAuth }" />
+        <lightning:button variant="brand" label="Reauthorize Google" title="Reauthorize Google"
+            onclick="{! c.doreAuth }" />
+        <p>
+            <!-- {!v.access} -->
+
+        </p> <br />
+
+        <p>
+            <!--{!v.accessToken}-->
+        </p>
+        <lightning:button variant="brand" label="Get" title="Get" onclick="{!c.doGet }" />
+        
+        <!--<lightning:button variant="brand" label="Put" title="Put" onclick="{!c.doPut }" />-->
+    </lightning:card>
+    <lightning:card title="Show Event Name">
+
+        <aura:iteration items="{!v.EventList}" var="item">
+            <p>{!item}</p>
+        </aura:iteration>
+
+        <div style="height: 300px">
+            <lightning:datatable
+                    keyField="id"
+                    data="{! v.data }"
+                    columns="{! v.columns }"
+                    hideCheckboxColumn="true"
+                    
+                    onsave="{! c.doPut }"/>
+        </div>
+
+    </lightning:card>
+    <lightning:card title="Post input">
+        <lightning:input type="text" name="input1" label="Enter a event" value="{!v.EventInput}" />
+        <div class="slds-m-top_small">
+        <lightning:button variant="brand" label="Post" title="Post" onclick="{!c.doPost }" />
+            </div>
+    </lightning:card>
+</aura:component>
