@@ -18,6 +18,7 @@ public class AccountClass {
                 conList.add(con);
             }
         }
+        System.debug('Testing git hub')
         insert accList;
         insert conList;
     }
